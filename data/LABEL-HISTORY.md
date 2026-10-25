@@ -6,11 +6,11 @@ field on every item.
 
 ## Who ruled
 
-Mike Curry, the keeper of the archive, made every expert ruling. Claude (Anthropic's
+Mike Curry, the keeper of the archive, made every ruling. Claude (Anthropic's
 model, working in Claude Code) built the items, the sitting sheets and the harness, and
 made the model-read labels described at the end.
 
-## The expert labels, by how they were made
+## The gold labels, by how they were made
 
 Every item carries an `assurance` value that says how its ruling was made. From most to
 least careful:
@@ -64,7 +64,7 @@ record should not carry the line" (a duplicate record, to be merged), which is n
 as "the page does not refer to this person". A hand check against the page images found
 both problems (`../results/LABEL-AUDIT.md`). Every July ruling the page text contradicted
 on its face (a kill whose surname is printed on the page, or a keep whose surname is not
-in the text) was held out of the expert set until the keeper ruled it again blind. All 30
+in the text) was held out of the gold set until the keeper ruled it again blind. All 30
 of those are now among the 70 blind-page claims; he agreed with his own July ruling on 4
 of the 30 (`../results/blind-sitting.md`).
 
@@ -85,7 +85,7 @@ FC-0503 Dorothy, FC-0500 Weasel, FC-0512 Marshall, FC-0517 Diane). The keeper ru
 one UNSUPPORTED and wrote the fuller name the page prints ("It is this person, but he should
 be in the record as Everett Marshall, not Marshall"). That ruling answers whether the record
 should exist in that form, a different question from whether the page refers to the person.
-They stay in the expert set as ruled, and `tools/report.py` scores the 70 in two lines,
+They stay in the gold set as ruled, and `tools/report.py` scores the 70 in two lines,
 `gold:blind-page:full-name` (63) and `gold:blind-page:one-word-name` (7), so a reader can
 weigh them apart. On the seven, every model's precision is 0.00.
 
@@ -102,7 +102,7 @@ call, 60 agree and 7 contradict.
 
 236 faithful_claim items carry Claude's own reads of the page images, made while the
 archive was built and accepted at a promote, never ruled one at a time by a person. They
-are the `silver` split, reported in their own column and never mixed into an expert number.
+are the `silver` split, reported in their own column and never mixed into a gold number.
 
 ## Labels that moved after a run
 

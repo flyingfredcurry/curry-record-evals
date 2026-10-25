@@ -8,9 +8,9 @@ abstention.
 
 - **faithful_claim**: an extractor says a printed page refers to a named person and cites
   the text it matched. Does the page support that? SUPPORTED, UNSUPPORTED, or CANNOT BE
-  PROVEN. 300 expert-labeled items.
+  PROVEN. 300 hand-labeled items.
 - **same_person**: two records carry names that look alike. Are they one person? SAME,
-  DIFFERENT, or CANNOT TELL. 90 expert-labeled pairs.
+  DIFFERENT, or CANNOT TELL. 90 hand-labeled pairs.
 
 Both run on [Inspect](https://inspect.aisi.org.uk/). The answer key has never been
 published; the pages are the archive's own scans.
@@ -54,7 +54,7 @@ inspect eval curry_record_evals/faithful_claim.py --model anthropic/claude-sonne
 inspect eval curry_record_evals/same_person.py --model anthropic/claude-sonnet-5-5
 ```
 
-`-T split=gold|silver|all` picks the labels (default `gold`, the expert labels);
+`-T split=gold|silver|all` picks the labels (default `gold`, the keeper's rulings);
 `-T assurance=blind-page` runs one group of rulings (the values are in Dataset);
 `-T ids=FC-0001,FC-0002` runs a subset; on same_person, `-T standard=told` puts the standard
 in the system prompt. The whole-page conditions (`page_text`, `page_image`, `crops`) need
@@ -73,8 +73,8 @@ extractor's cited text, and up to fifty words of OCR text around it. A same_pers
 carries each record's name and up to three places it is printed, with a short
 transcription. No page images and no full OCR text ship here.
 
-**Who labeled.** Mike Curry, the archive's keeper, made every expert ruling (the `gold`
-split).
+**Who labeled.** Mike Curry, the archive's keeper, made every ruling in the `gold`
+split.
 
 - 70 claims and 79 pairs were ruled blind for this eval in October 2026, the page in view,
   no earlier call shown (`assurance` values `blind-page` and `blind`). The 70 claims and 34
@@ -91,7 +91,7 @@ split).
 
 A further 236 faithful_claim items carry labels from Claude's reads of the page images,
 accepted during the archive's build but never ruled one at a time by a person (the `silver`
-split). They were not run and never enter an expert number.
+split). They were not run and never enter a `gold` number.
 
 Every item names who ruled it, how and when. Every claim item carries a one-line rationale
 shaped from the keeper's note; the pair items carry Claude's earlier call. `data/CARD.md`
@@ -134,7 +134,7 @@ condition for same_person is `text`, the names, places printed and short transcr
 the archive also ran `crops`, the page crops alone, and `both`. Full tables for every
 condition and every group of rulings are in `results/`.
 
-**faithful_claim, 300 expert items, excerpt.** The 95% half-width on correct is about ±0.05.
+**faithful_claim, 300 gold items, excerpt.** The 95% half-width on correct is about ±0.05.
 
 | model | correct | wrong | abstained | correct given attempted |
 |---|---|---|---|---|
@@ -154,7 +154,7 @@ stored name is in the page's OCR text is correct 0.58, wrong 0.04. Always SUPPOR
 correct 0.61, wrong 0.39. The model verifier the archive ran in July 2026 is correct 0.42,
 wrong 0.13 on the 260 items it saw.
 
-**same_person, 90 expert pairs, text.** The 95% half-width on correct is about ±0.10.
+**same_person, 90 gold pairs, text.** The 95% half-width on correct is about ±0.10.
 
 | model | correct | wrong | abstained | correct given attempted |
 |---|---|---|---|---|
@@ -204,11 +204,11 @@ that form. The results report the seven one-word records apart for that reason.
 
 ## Known limitations
 
-- One annotator. Every expert label is one person's, with no second reader. The nearest
+- One annotator. Every gold label is one person's, with no second reader. The nearest
   check is his agreement with Claude's earlier reads of the same pages
   (`results/blind-sitting.md`): 39 of 40 blind claims and 60 of 79 pairs agree. A second
-  expert on a sample is the obvious next step.
-- Small. 300 and 90 expert items, 70 and 79 of them ruled blind for this eval. The
+  annotator on a sample is the obvious next step.
+- Small. 300 and 90 gold items, 70 and 79 of them ruled blind for this eval. The
   intervals say what that buys: ±0.05 on the 300, ±0.10 on the 70 and on the 90, ±0.17 on
   the 34.
 - One sample per item in the headline tables. Two more samples per item on the public
@@ -231,7 +231,7 @@ that form. The results report the seven one-word records apart for that reason.
 
 ## How this was made, and by whom
 
-Mike Curry, the archive's keeper, made every expert ruling, with the page in view and
+Mike Curry, the archive's keeper, made every ruling, with the page in view and
 nothing else. He is not a programmer. Claude, Anthropic's model working in Claude Code,
 built everything else at his direction: the items from the archive's records, the two
 sitting sheets, the Inspect tasks and the scorer, the baselines, the report tools, the model
