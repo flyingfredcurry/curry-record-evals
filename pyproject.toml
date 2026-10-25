@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "curry-record-evals"
+version = "0.1.0"
+description = "Judgment evals built from a family wrestling archive: does a printed page refer to this person, and are two printed names the same person. Abstaining is allowed; a confident wrong answer costs more."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+authors = [{name = "Michael Koury"}]
+dependencies = ["inspect-ai>=0.3.281", "anthropic>=1.15.0"]
+
+[tool.setuptools.packages.find]
+include = ["curry_record_evals*"]

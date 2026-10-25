@@ -1,0 +1,7 @@
+.venv/
+_private/
+logs/
+__pycache__/
+*.pyc
+STAGING-NOTES.md
+*.egg-info/
