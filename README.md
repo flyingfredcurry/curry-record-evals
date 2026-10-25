@@ -163,8 +163,8 @@ wrong 0.13 on the 260 items it saw.
 | Claude Opus 5.5 | 0.59 | 0.02 | 0.39 | 0.96 |
 | Claude Fable 5.1 | 0.61 | 0.07 | 0.32 | 0.90 |
 
-The models are reliable when they answer and abstain on a third to a half of the pairs the
-keeper settled. Given the page crops instead, every model abstains less and gets more right:
+The models are reliable when they answer and abstain on a third to a half of the pairs.
+Given the page crops instead, every model abstains less and gets more right:
 correct 0.63 to 0.77, wrong 0.04 to 0.11. Crops and transcriptions together are no better
 than the crops alone. On the 34 pairs ruled on the whole-page sheet, the hardest, correct
 falls to 0.44 to 0.50 on the text (±0.17), and the crops raise wrong for all four models, to
@@ -174,7 +174,8 @@ falls to 0.44 to 0.50 on the text (±0.17), and the crops raise wrong for all fo
 standard above into the system prompt. Told, every model abstains more and gets less right
 on the 90: correct 0.36 to 0.48 on the text and 0.44 to 0.62 on the crops. Most of the flips
 are SAME to CANNOT TELL, on pairs the keeper ruled SAME. On the 34 hardest pairs it
-reverses: correct rises for every model, and wrong on the crops falls to 0.03 to 0.09.
+reverses: correct rises for every model on the text and holds or rises on the crops, and
+wrong on the crops falls to 0.03 to 0.09.
 Stating the standard buys caution, and on this set the caution paid only on the hardest
 pairs.
 
@@ -231,8 +232,8 @@ that form. The results report the seven one-word records apart for that reason.
 
 ## How this was made, and by whom
 
-Mike Curry, the archive's keeper, made every ruling, with the page in view and
-nothing else. He is not a programmer. Claude, Anthropic's model working in Claude Code,
+Mike Curry, the archive's keeper, made every ruling with the page in view. Dataset says what
+else each group of rulings had in view. Claude, Anthropic's model working in Claude Code,
 built everything else at his direction: the items from the archive's records, the two
 sitting sheets, the Inspect tasks and the scorer, the baselines, the report tools, the model
 runs, and the first draft of every sentence here.
@@ -247,10 +248,10 @@ table in `results/` that a tool in `tools/` wrote from the logs. Nothing is quot
 memory.
 
 What Claude could not do: rule an item, write to the archive's live database (this work
-read it and never wrote it), or publish. He created this repository and pushed it. The
-pages, the full OCR text, Claude's own answer key for the blind sitting and his raw notes
-stay in the archive's private folder, so no shipped file carries more than a short quotation
-from any printed page.
+read it and never wrote it), or publish on its own. The keeper created this repository and
+gave the word; Claude ran the push. The pages, the full OCR text, Claude's own answer key
+for the blind sitting and his raw notes stay in the archive's private folder, so no shipped
+file carries more than a short quotation from any printed page.
 
 The model runs cost $71.51 of the $112.95 he set aside, at Batch API prices.
 
