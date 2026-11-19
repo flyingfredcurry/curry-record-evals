@@ -28,9 +28,9 @@ Distinct pages: 191. Items whose cited text the page's OCR text does not contain
 |---|---|---|---|
 | gold | blind | DIFFERENT | 9 |
 | gold | blind | SAME | 36 |
-| gold | blind-page | CANNOT_TELL | 11 |
+| gold | blind-page | CANNOT_TELL | 10 |
 | gold | blind-page | DIFFERENT | 19 |
-| gold | blind-page | SAME | 4 |
+| gold | blind-page | SAME | 5 |
 | gold | question | SAME | 2 |
 | gold | single | CANNOT_TELL | 2 |
 | gold | single | DIFFERENT | 1 |

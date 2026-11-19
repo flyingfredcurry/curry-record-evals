@@ -41,6 +41,18 @@ or on two newsprint photographs he did not trust. He looked again and re-ruled a
 two pairs went to CANNOT TELL. Those items carry `reruled_after_flag: true` and their
 rationale tells the sequence.
 
+One of those two pairs, SP-0062 (Carl Pojello, The Ring, June 1931; Karl Pojello, Wrestling
+World, June 1964), was ruled a fourth time on 2026-11-19, a month after the models had
+answered and twenty-five days after the first release. The keeper asked whether the pages held
+photographs. They do: the 1931 page prints the wrestler beside his caption, and the 1963 page
+(The Ring Wrestling, May 1963, already ruled one man with the 1964 page as SP-0007) prints
+his head shot. Claude put the two faces side by side at full scan resolution and said it
+leaned to one man; he looked and ruled SAME. The item keeps `blind-page`, the sheet it was
+sat on, and carries `reruled_on_photographs` with the date, the move and what was in view.
+Because Claude's lean was stated first and the models' answers were public by then,
+`tools/agreement.py` leaves this pair out of the blind-agreement count. No model saw the two
+faces on one item: the 1963 page belongs to SP-0007.
+
 Two of the 70 claims (FC-0105, FC-0253) are weaker still: Claude had told the keeper what
 those pages print before the first sheet. Their rationale says so.
 
@@ -95,8 +107,8 @@ weigh them apart. On the seven, every model's precision is 0.00.
 keeper could not see (`../results/blind-sitting.md`): on 40 claims ruled blind against
 Claude's earlier read of the page, 39 agree and none contradict; on the 30 ruled against
 his own July ruling, 4 agree and 16 contradict (these 30 were chosen because the page text
-contradicted the July call, so low agreement was expected); on 79 pairs against Claude's
-call, 60 agree and 7 contradict.
+contradicted the July call, so low agreement was expected); on 78 pairs against Claude's
+call, 60 agree and 7 contradict; the pair re-ruled on the photographs is left out.
 
 ## The model-read labels (silver)
 
@@ -107,7 +119,7 @@ are the `silver` split, reported in their own column and never mixed into a gold
 ## Labels that moved after a run
 
 Labels can move after a model has answered (the whole-page pass moved 56; two pairs moved
-again after a flag). `tools/report.py` therefore never trusts the target stored in a log. It
+again after a flag; one of those moved a third time on 2026-11-19, on the photographs). `tools/report.py` therefore never trusts the target stored in a log. It
 reads each sample's parsed answer and scores it against the item as it stands now. No model
 was re-run for the whole-page labels; the stored answers were re-scored.
 

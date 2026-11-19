@@ -74,10 +74,16 @@ def main():
     labs2 = ["SAME", "DIFFERENT", "CANNOT_TELL"]
     ab2 = ABSTAIN["same_person"]
     sp_pairs = [(r["claude_call"], r["label"]) for r in sp
-                if r["ruled_by"] == "mike" and r["assurance"] in ("blind", "blind-outside", "blind-page") and r.get("claude_call")]
+                if r["ruled_by"] == "mike" and r["assurance"] in ("blind", "blind-outside", "blind-page") and r.get("claude_call")
+                and not r.get("reruled_on_photographs")]
+    photos = [(r["id"], r["claude_call"], r["reruled_on_photographs"]["from"], r["label"], r["reruled_on_photographs"]["date"])
+              for r in sp if r.get("reruled_on_photographs")]
     out.append("## same_person\n")
     if sp_pairs:
         out.append(matrix(sp_pairs, labs2, ab2, "Blind ruling against Claude's earlier call on the pair", "Claude", "Mike, blind"))
+    if photos:
+        out.append("Not counted above, ruled again later with the photographs the pages print in view and Claude's lean stated "
+                   "(`reruled_on_photographs`): " + "; ".join(f"{a} Claude {c}, blind {b}, on the photographs {d} ({e})" for a, c, b, d, e in photos) + "." + chr(10))
     outside = sum(1 for r in fc + sp if r["assurance"] == "blind-outside")
     out.append(f"Items ruled from knowledge outside the pages (assurance blind-outside): {outside}.\n")
     print("\n".join(out))

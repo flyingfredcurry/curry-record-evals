@@ -28,13 +28,15 @@ Mike Curry ruled every item below with the page in view and without the earlier 
 
 ### Blind ruling against Claude's earlier call on the pair
 
-79 items. Exact agreement 60 (76%). Contradictions 7 (9%). The rest, 12, are one side abstaining.
+78 items. Exact agreement 60 (77%). Contradictions 7 (9%). The rest, 11, are one side abstaining.
 
 | Claude vs Mike, blind | SAME | DIFFERENT | CANNOT_TELL |
 |---|---|---|---|
-| SAME | 33 | 0 | 5 |
+| SAME | 33 | 0 | 4 |
 | DIFFERENT | 7 | 27 | 6 |
 | CANNOT_TELL | 0 | 1 | 0 |
+
+Not counted above, ruled again later with the photographs the pages print in view and Claude's lean stated (`reruled_on_photographs`): SP-0062 Claude SAME, blind CANNOT_TELL, on the photographs SAME (2026-11-19).
 
 Items ruled from knowledge outside the pages (assurance blind-outside): 0.
 

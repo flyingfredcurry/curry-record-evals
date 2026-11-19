@@ -22,8 +22,8 @@ section says who did what.
 **At a glance.** Four Claude models, October 2026. On the 300 claims, given a fifty-word
 excerpt, they score correct 0.70 to 0.79 and wrong 0.03 to 0.05, abstaining on the rest;
 given the whole page, correct 0.83 to 0.93. On the 90 pairs, given the transcriptions,
-correct 0.47 to 0.61 and wrong 0.02 to 0.07, abstaining on a third to a half; given the page
-crops, correct 0.63 to 0.77. The models are reliable when they answer. Told the archive's
+correct 0.46 to 0.62 and wrong 0.02 to 0.06, abstaining on a third to a half; given the page
+crops, correct 0.62 to 0.78. The models are reliable when they answer. Told the archive's
 standard in so many words, they abstain more, which costs them on the whole set and pays on
 the hardest pairs. Every label is one person's. The 95% intervals are about ±0.05 on the 300
 and ±0.10 on the 90.
@@ -81,7 +81,8 @@ split.
   of the pairs were ruled twice in one evening, because the first sheet cropped the page and
   on some cards hid the name. The whole-page ruling is the label; the crop ruling stays on
   the claim items as `crop_ruling`. Six cards were ruled a third time after Claude flagged
-  them against the page text (`reruled_after_flag`).
+  them against the page text (`reruled_after_flag`). One pair was ruled a fourth time on
+  2026-11-19, on the photographs its pages print (`reruled_on_photographs`).
 - 230 claims were ruled on the archive's own review sheet in July 2026 (`deliberate`,
   `group` or `rapid`), with a model's proposed verdict in view, so they may lean toward it.
   Every July ruling the page text contradicted on its face was held out and ruled again
@@ -98,7 +99,7 @@ shaped from the keeper's note; the pair items carry Claude's earlier call. `data
 has the counts; `data/LABEL-HISTORY.md` tells what moved, when, and why.
 
 **Balance.** faithful_claim: 184 SUPPORTED, 104 UNSUPPORTED, 12 CANNOT BE PROVEN.
-same_person: 48 SAME, 29 DIFFERENT, 13 CANNOT TELL.
+same_person: 49 SAME, 29 DIFFERENT, 12 CANNOT TELL.
 
 **CANNOT BE PROVEN means one thing here.** In the keeper's words, "can't be proven by the
 page I'm looking at." It is not "I don't know who this is." A model that commits on such an
@@ -158,38 +159,44 @@ wrong 0.13 on the 260 items it saw.
 
 | model | correct | wrong | abstained | correct given attempted |
 |---|---|---|---|---|
-| Claude Haiku 5.5 | 0.47 | 0.02 | 0.51 | 0.95 |
-| Claude Sonnet 5.5 | 0.54 | 0.03 | 0.42 | 0.94 |
-| Claude Opus 5.5 | 0.59 | 0.02 | 0.39 | 0.96 |
-| Claude Fable 5.1 | 0.61 | 0.07 | 0.32 | 0.90 |
+| Claude Haiku 5.5 | 0.46 | 0.02 | 0.52 | 0.95 |
+| Claude Sonnet 5.5 | 0.53 | 0.03 | 0.43 | 0.94 |
+| Claude Opus 5.5 | 0.58 | 0.02 | 0.40 | 0.96 |
+| Claude Fable 5.1 | 0.62 | 0.06 | 0.32 | 0.92 |
 
 The models are reliable when they answer and abstain on a third to a half of the pairs.
 Given the page crops instead, every model abstains less and gets more right:
-correct 0.63 to 0.77, wrong 0.04 to 0.11. Crops and transcriptions together are no better
+correct 0.62 to 0.78, wrong 0.04 to 0.10. Crops and transcriptions together are no better
 than the crops alone. On the 34 pairs ruled on the whole-page sheet, the hardest, correct
-falls to 0.44 to 0.50 on the text (±0.17), and the crops raise wrong for all four models, to
-0.09 to 0.24.
+falls to 0.41 to 0.47 on the text (±0.17), and the crops raise wrong for all four models, to
+0.09 to 0.21.
 
 **Told the standard** (`results/told-standard.md`). A second same_person run put the
 standard above into the system prompt. Told, every model abstains more and gets less right
-on the 90: correct 0.36 to 0.48 on the text and 0.44 to 0.62 on the crops. Most of the flips
+on the 90: correct 0.36 to 0.47 on the text and 0.44 to 0.61 on the crops. Most of the flips
 are SAME to CANNOT TELL, on pairs the keeper ruled SAME. On the 34 hardest pairs it
-reverses: correct rises for every model on the text and holds or rises on the crops, and
-wrong on the crops falls to 0.03 to 0.09.
-Stating the standard buys caution, and on this set the caution paid only on the hardest
-pairs.
+reverses on the text: correct rises for every model. On the crops it rises for two models and
+falls for Opus and Fable, by 0.06 and 0.03, while wrong on the crops falls for all four, to
+0.03 to 0.09. Stating the standard buys caution, and on this set the caution paid only on
+the hardest pairs, and on the crops not for every model.
 
 ## Reading the transcripts
 
 Anthropic's guidance on evals says to read the transcripts and ask whether the failures seem
 fair. Three items from the public-condition logs, quoted from the models' own reasoning.
 
-**Carl Pojello, The Ring, 1931, and Karl Pojello, Wrestling World, 1964.** Two bare names,
-thirty-three years apart. The keeper ruled CANNOT TELL. Fable said SAME, from the career:
-"the Lithuanian-American wrestler ... who later managed Maurice Tillet ... Pojello died in
-1954." Opus knew the same career and said CANNOT TELL: "Outside knowledge is not record
-evidence." The page evidence was identical; what differed was whether a known career counts
-as evidence.
+**Carl Pojello, The Ring, 1931, and Karl Pojello, Wrestling World, 1964.** Two names, each
+with a descriptor beside it, thirty-three years apart, and no page ties them. In October the
+keeper ruled CANNOT TELL. Fable said SAME, from the career: "the Lithuanian-American
+wrestler ... who later managed Maurice Tillet ... Pojello died in 1954." Opus knew the same
+career and said CANNOT TELL: "Outside knowledge is not record evidence." The page evidence
+the models were given was identical; what differed was whether a known career counts as
+evidence. In November the keeper asked whether the pages held photographs. They do: the 1931
+page prints the wrestler beside his caption, and a 1963 page already ruled one man with the
+1964 page prints his head shot. With the two faces side by side he moved the label to SAME
+(`data/LABEL-HISTORY.md`). Fable's answer is now scored correct, for a reason the record does
+not accept; Opus's abstention stays an abstention. What settled it was on the record's own
+pages, and the two faces were never on one item: the 1963 page belongs to another pair.
 
 **Bob Geigel and Bob Giegel, Wrestling World, 1963 to 1968.** The keeper ruled SAME: one
 name, one magazine, the same years. Untold, Sonnet, Opus and Fable said SAME. Told, three
@@ -207,8 +214,9 @@ that form. The results report the seven one-word records apart for that reason.
 
 - One annotator. Every gold label is one person's, with no second reader. The nearest
   check is his agreement with Claude's earlier reads of the same pages
-  (`results/blind-sitting.md`): 39 of 40 blind claims and 60 of 79 pairs agree. A second
-  annotator on a sample is the obvious next step.
+  (`results/blind-sitting.md`): 39 of 40 blind claims and 60 of 78 pairs agree; the pair
+  re-ruled later with Claude's lean in view is left out. A second annotator on a sample is
+  the obvious next step.
 - Small. 300 and 90 gold items, 70 and 79 of them ruled blind for this eval. The
   intervals say what that buys: ±0.05 on the 300, ±0.10 on the 70 and on the 90, ±0.17 on
   the 34.
@@ -219,7 +227,8 @@ that form. The results report the seven one-word records apart for that reason.
   treat them as independent. Model comparisons are not paired.
 - The 70 claims and 34 pairs were labeled by one person twice in one evening. 31 of the
   claims and 23 of the pairs changed between the first ruling and the second, and six items
-  changed a third time after a flag.
+  changed a third time after a flag. One pair changed a fourth time, a month later, on the
+  photographs its pages print.
 - The 230 July claim rulings were made with a model's verdict in view.
 - faithful_claim is mostly one magazine, The Ring, 1931, 1932 and 1934. English-language
   American print only.
@@ -241,7 +250,9 @@ runs, and the first draft of every sentence here.
 Claude flagged; he ruled. When all four models in every condition disagreed with the answer
 key on sixteen claims, Claude read the items and found the sheet had cropped the names off
 the cards. He sat the whole-page pass the same evening and the labels moved. Claude read the
-new rulings against the page text and flagged six; he looked again and re-ruled all six.
+new rulings against the page text and flagged six; he looked again and re-ruled all six. In
+November, with the eval public, he asked whether two of its pages held photographs. They did,
+and one label moved, with the move recorded.
 Before this text was called finished he read it word for word against the files on disk,
 and nine sentences were narrowed to what the files support. Every number here comes from a
 table in `results/` that a tool in `tools/` wrote from the logs. Nothing is quoted from
@@ -265,6 +276,9 @@ The model runs cost $71.51 of the $112.95 he set aside, at Batch API prices.
 
 ## Changelog
 
+- 0.1.1, November 2026: one same_person label moved (SP-0062, CANNOT TELL to SAME) on the
+  photographs its pages print; every same_person table re-scored from the stored logs by
+  the report tools; the pair left out of the blind-agreement count. No model was re-run.
 - 0.1.0, October 2026: first public release. Four Claude models on both tasks; the
   told-standard, resampling and `both` runs reported.
 
